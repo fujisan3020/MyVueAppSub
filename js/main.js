@@ -4,12 +4,20 @@
   //Components
 
   var likeComponent = Vue.extend({
-    data: function() {
-      return {
-        count:0
+    //prosp(プロパティーズ)というキーで受け取る
+    // props: ['message'],
+    props: {
+      message: {
+        type: String,
+        default: 'LIke'
       }
     },
-    template: '<button @click="countUp">Like {{ count }}</button>',
+    data: function() {
+      return {
+        count: 0
+      }
+    },
+    template: '<button @click="countUp">{{ message }} {{ count }}</button>',
     // templete: '<div><button>Like</button><button>Like</button></div>'
     methods: {
       countUp: function() {
@@ -19,7 +27,7 @@
   });
 
   var app = new Vue({
-      el:'#app',
+      el: '#app',
       components: {
         'like-component': likeComponent
       }
